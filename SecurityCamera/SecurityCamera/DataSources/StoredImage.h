@@ -18,9 +18,18 @@
 @property (nonatomic,readonly) UIImage  *image;
 @property (nonatomic,strong) NSString *timestamp;
 
+// Serialization
 - (NSDictionary*)serialize;
 - (void) deserialize:(NSDictionary*)dictionary;
 
+// Managing hard drive data
+- (void) erase;
+- (float) getHardDriveSize;
+
+// Getting timestamp as NSDate
+- (NSDate*) timestampDate;
+
+//Factory
 + (StoredImage*)createStorageImageAndSave:(UIImage*)image timestamp:(NSString*)timestamp;
 
 @end

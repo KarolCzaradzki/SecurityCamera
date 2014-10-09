@@ -176,14 +176,19 @@
     self.lastMotionImageView.image = [ImageHelper sharedInstance].lastMotionImage;
     self.lastMotionDiffImageView.image = [ImageHelper sharedInstance].lastMotionDifferenceImage;
     
+    //Calculating image size
+    NSData *imageData = UIImagePNGRepresentation(image);
+    float dataSizeInMegabytes = (float)[imageData length]/(1024.0f*1024.0f);
+    
     //Setting date string
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
-                                                          dateStyle:NSDateFormatterShortStyle
-                                                          timeStyle:NSDateFormatterFullStyle];
-    NSString *formatedString = [NSString stringWithFormat:@"Last image captured: %@",dateString];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"];
+    NSString *dateString = [formatter stringFromDate:[NSDate date]];
+    
+    NSString *formatedString = [NSString stringWithFormat:@"Last image captured: %@ Size: %.3f",dateString,dataSizeInMegabytes];
     lastMotionImageDateLabel.text = formatedString;
     
-    [[StorageHelper sharedInstance] addImage:image withTimestamp:dateString];
+    [[StorageHelper sharedInstance] addImage:[ImageHelper sharedInstance].lastMotionImage withTimestamp:dateString];
     
     //Restarting timer
     [self initializeTimer];

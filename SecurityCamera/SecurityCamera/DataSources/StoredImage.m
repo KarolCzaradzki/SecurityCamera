@@ -24,11 +24,8 @@
 
 -(UIImage*) image
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, imagePath];
     //Don't store this one in memory cause it may cause memory warning
-    return [UIImage imageWithContentsOfFile:filePath];
+    return [UIImage imageWithContentsOfFile:[self imageFullPath]];
 }
 
 
@@ -44,13 +41,33 @@
 {
     self.timestamp = dictionary[@"timestamp"];
     self.imagePath = dictionary[@"path"];
-    NSString *thumbnailPath = [self.imagePath stringByReplacingOccurrencesOfString:@".png" withString:@"_thumb.png"];
+    self.imageThumbnail = [UIImage imageWithContentsOfFile:[self thumbnailFullPath]];
+}
+
+- (void) erase
+{
+    [[NSFileManager defaultManager] removeItemAtPath:[self imageFullPath] error:nil];
+    [[NSFileManager defaultManager] removeItemAtPath:[self thumbnailFullPath] error:nil];
+}
+
+- (float) getHardDriveSize
+{
+    float resultSize = 0;
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, thumbnailPath];
+    NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[self imageFullPath] error:nil];
+    resultSize += [[fileAttributes objectForKey:NSFileSize] floatValue];
     
-    self.imageThumbnail = [UIImage imageWithContentsOfFile:filePath];
+    fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[self thumbnailFullPath] error:nil];
+    resultSize += [[fileAttributes objectForKey:NSFileSize] floatValue];
+    
+    return resultSize/(1024.0f*1024.0f);
+}
+
+- (NSDate*) timestampDate
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"];
+    return [formatter dateFromString:timestamp];
 }
 
 + (NSString*)saveData:(NSData*)data withName:(NSString*)name
@@ -97,4 +114,19 @@
     return newDataSource;
 }
 
+#pragma mark Path builder
+- (NSString*)imageFullPath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [NSString stringWithFormat:@"%@/%@", documentsDirectory, imagePath];
+}
+
+- (NSString*)thumbnailFullPath
+{
+    NSString *thumbnailPath = [self.imagePath stringByReplacingOccurrencesOfString:@".png" withString:@"_thumb.png"];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [NSString stringWithFormat:@"%@/%@", documentsDirectory, thumbnailPath];
+}
 @end

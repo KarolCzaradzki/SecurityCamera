@@ -11,6 +11,8 @@
 #import "UIImage+Thumbnail.h"
 #import "StoredImage.h"
 
+#define MAX_SPACE_ON_HARD_DRIVE 100.0f //In megabytes
+
 @implementation StorageHelper
 
 @synthesize storedImages;
@@ -57,7 +59,9 @@
 
 - (void)synchronize
 {
-
+    [self sortDataByDate];
+    [self removeOldImages];
+    
     //Serializing objects
     NSMutableArray *descriptions = [[NSMutableArray alloc] init];
     for(StoredImage *item in storedImages)
@@ -66,6 +70,37 @@
     }
     
     [descriptions writeToFile:[self buildDataBaseUrl] atomically:NO];
+}
+
+- (void)sortDataByDate
+{
+    [storedImages sortUsingComparator:^NSComparisonResult(StoredImage* obj1, StoredImage* obj2) {
+        return [obj1.timestampDate compare:obj2.timestampDate];
+    }];
+}
+
+#pragma mark Removing images
+- (void)removeImage:(StoredImage*)dataSource
+{
+    [dataSource erase];
+    [storedImages removeObject:dataSource];
+    [self synchronize];
+}
+
+- (void)removeOldImages
+{
+    float totalSize = 0.0f;
+    for(StoredImage *image in storedImages)
+    {
+        totalSize += [image getHardDriveSize];
+    }
+    
+    while(totalSize >= MAX_SPACE_ON_HARD_DRIVE)
+    {
+        StoredImage *image = [storedImages firstObject];
+        totalSize -= [image getHardDriveSize];
+        [self removeImage:image];
+    }
 }
 
 #pragma mark Singleton

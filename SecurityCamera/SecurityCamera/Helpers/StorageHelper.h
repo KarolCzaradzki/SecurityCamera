@@ -18,6 +18,8 @@
 
 - (void)synchronize;
 - (void)addImage:(UIImage*)image withTimestamp:(NSString*)timestamp;
+- (void)removeImage:(StoredImage*)dataSource;
+- (void)removeOldImages;
 
 +(StorageHelper*) sharedInstance;
 

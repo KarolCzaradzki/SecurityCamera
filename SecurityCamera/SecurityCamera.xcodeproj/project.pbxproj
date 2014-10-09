@@ -12,7 +12,6 @@
 		9AAAED6E19E701C9001D9AD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AAAED6C19E701C9001D9AD2 /* Main.storyboard */; };
 		9AAAED7019E701C9001D9AD2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AAAED6F19E701C9001D9AD2 /* Images.xcassets */; };
 		9AAAED7319E701C9001D9AD2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAAED7119E701C9001D9AD2 /* LaunchScreen.xib */; };
-		9AAAED7F19E701CA001D9AD2 /* SecurityCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAED7E19E701CA001D9AD2 /* SecurityCameraTests.m */; };
 		9AAAED8919E70599001D9AD2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AAAED8819E70599001D9AD2 /* AVFoundation.framework */; };
 		9AAAED9219E7140D001D9AD2 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AAAED9119E7140D001D9AD2 /* opencv2.framework */; };
 		9AAAED9B19E7288E001D9AD2 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AAAED9519E7288E001D9AD2 /* opencv2.framework */; };
@@ -25,6 +24,10 @@
 		9AAAEDAF19E735CD001D9AD2 /* SimpleImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDAE19E735CD001D9AD2 /* SimpleImageCell.m */; };
 		9AAAEDB219E73F2E001D9AD2 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDB119E73F2E001D9AD2 /* TabBarController.m */; };
 		9AAAEDB519E7407D001D9AD2 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDB419E7407D001D9AD2 /* GalleryViewController.m */; };
+		9AAAEDB819E75621001D9AD2 /* ImageManipulationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDB619E75621001D9AD2 /* ImageManipulationTests.m */; };
+		9AAAEDB919E75621001D9AD2 /* StorageHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDB719E75621001D9AD2 /* StorageHelperTests.m */; };
+		9AAAEDBC19E75758001D9AD2 /* lena1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAAEDBA19E75758001D9AD2 /* lena1.png */; };
+		9AAAEDBD19E75758001D9AD2 /* lena2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AAAEDBB19E75758001D9AD2 /* lena2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +51,6 @@
 		9AAAED7219E701C9001D9AD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9AAAED7819E701C9001D9AD2 /* SecurityCameraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecurityCameraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AAAED7D19E701CA001D9AD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9AAAED7E19E701CA001D9AD2 /* SecurityCameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecurityCameraTests.m; sourceTree = "<group>"; };
 		9AAAED8819E70599001D9AD2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9AAAED9119E7140D001D9AD2 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		9AAAED9519E7288E001D9AD2 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
@@ -70,6 +72,10 @@
 		9AAAEDB119E73F2E001D9AD2 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		9AAAEDB319E7407D001D9AD2 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
 		9AAAEDB419E7407D001D9AD2 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
+		9AAAEDB619E75621001D9AD2 /* ImageManipulationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageManipulationTests.m; sourceTree = "<group>"; };
+		9AAAEDB719E75621001D9AD2 /* StorageHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageHelperTests.m; sourceTree = "<group>"; };
+		9AAAEDBA19E75758001D9AD2 /* lena1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lena1.png; sourceTree = "<group>"; };
+		9AAAEDBB19E75758001D9AD2 /* lena2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lena2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,11 +121,11 @@
 		9AAAED5E19E701C9001D9AD2 /* SecurityCamera */ = {
 			isa = PBXGroup;
 			children = (
+				9AAAED9419E7288E001D9AD2 /* Frameworks */,
 				9AAAEDAC19E735B4001D9AD2 /* Controls */,
 				9AAAEDA519E733D3001D9AD2 /* ViewControllers */,
 				9AAAEDA119E72B19001D9AD2 /* Categories */,
 				9AAAED9319E7288E001D9AD2 /* DataSources */,
-				9AAAED9419E7288E001D9AD2 /* Frameworks */,
 				9AAAED9619E7288E001D9AD2 /* Helpers */,
 				9AAAED6319E701C9001D9AD2 /* AppDelegate.h */,
 				9AAAED6419E701C9001D9AD2 /* AppDelegate.m */,
@@ -143,7 +149,8 @@
 		9AAAED7B19E701C9001D9AD2 /* SecurityCameraTests */ = {
 			isa = PBXGroup;
 			children = (
-				9AAAED7E19E701CA001D9AD2 /* SecurityCameraTests.m */,
+				9AAAEDB619E75621001D9AD2 /* ImageManipulationTests.m */,
+				9AAAEDB719E75621001D9AD2 /* StorageHelperTests.m */,
 				9AAAED7C19E701CA001D9AD2 /* Supporting Files */,
 			);
 			path = SecurityCameraTests;
@@ -152,6 +159,8 @@
 		9AAAED7C19E701CA001D9AD2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9AAAEDBA19E75758001D9AD2 /* lena1.png */,
+				9AAAEDBB19E75758001D9AD2 /* lena2.png */,
 				9AAAED7D19E701CA001D9AD2 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -318,6 +327,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AAAEDBD19E75758001D9AD2 /* lena2.png in Resources */,
+				9AAAEDBC19E75758001D9AD2 /* lena1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +357,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AAAED7F19E701CA001D9AD2 /* SecurityCameraTests.m in Sources */,
+				9AAAEDB819E75621001D9AD2 /* ImageManipulationTests.m in Sources */,
+				9AAAEDB919E75621001D9AD2 /* StorageHelperTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -67,7 +67,12 @@
     int threesholdNumberOfChanges = result.rows*result.cols/30;
     if(numberOfChanges > threesholdNumberOfChanges)
     {
-        self.lastMotionImage = imageA;
+        //Grayscaling picture on which motion was detected
+        cvtColor(matA, matA, cv::COLOR_BGR2GRAY);
+        //Highlighting parts that changes
+        addWeighted( matA, 0.95f, result, 0.05f, 0.0, matA);
+        
+        self.lastMotionImage = [self UIImageFromCVMat:matA];
         self.lastMotionDifferenceImage = [self UIImageFromCVMat:result];
         return false;
     }

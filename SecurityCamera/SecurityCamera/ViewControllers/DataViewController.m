@@ -97,6 +97,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:^{
     }];
+    [[StorageHelper sharedInstance] removeImage:dataSource];
 }
 
 @end
