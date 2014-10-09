@@ -24,6 +24,7 @@
 @synthesize lastMotionImageDateLabel;
 @synthesize lastMotionImageView;
 @synthesize lastMotionDiffImageView;
+@synthesize session;
 
 #pragma mark Lifecycle
 - (void)dealloc
@@ -54,6 +55,11 @@
     [self initializeTimer];
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self terminateSession];
+}
+
 - (void)initializeTimer
 {
     self.photoTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(capturePicture) userInfo:nil repeats:NO];
@@ -62,7 +68,7 @@
 - (void)startStreamingFromCamera
 {
     //Creating session
-    AVCaptureSession *session = [[AVCaptureSession alloc] init];
+    session = [[AVCaptureSession alloc] init];
     session.sessionPreset = AVCaptureSessionPresetMedium;
     
     //Creating layer that video will be stream on
@@ -91,6 +97,14 @@
     [session startRunning];
 }
 
+- (void)terminateSession
+{
+    [photoTimer invalidate];
+    [session stopRunning];
+    self.session = nil;
+    self.stillImageOutput = nil;
+}
+
 #pragma mark Picture handling
 - (void)capturePicture
 {
@@ -116,9 +130,13 @@
         return;
     }
     
+    
     //Getting image
     [stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler: ^(CMSampleBufferRef imageSampleBuffer, NSError *error)
      {
+         if(error)
+             return;
+         
          CFDictionaryRef exifAttachments = CMGetAttachment( imageSampleBuffer, kCGImagePropertyExifDictionary, NULL);
          if (exifAttachments)
          {

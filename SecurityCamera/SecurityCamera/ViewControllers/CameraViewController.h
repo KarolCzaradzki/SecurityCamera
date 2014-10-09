@@ -19,6 +19,6 @@
 @property (nonatomic,strong) UILabel *lastMotionImageDateLabel;
 @property (nonatomic,strong) NSTimer *photoTimer;
 @property (nonatomic,strong) AVCaptureStillImageOutput* stillImageOutput;
-
+@property (nonatomic,strong) AVCaptureSession *session;
 @end
 

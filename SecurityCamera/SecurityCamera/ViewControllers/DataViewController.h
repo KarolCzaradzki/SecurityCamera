@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GalleryViewController.h"
 
-@interface DataViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface DataViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,GallerViewControllerDelegate>
 
 
 @end

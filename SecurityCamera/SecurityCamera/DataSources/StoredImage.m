@@ -24,8 +24,11 @@
 
 -(UIImage*) image
 {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, imagePath];
     //Don't store this one in memory cause it may cause memory warning
-    return [UIImage imageWithContentsOfFile:imagePath];
+    return [UIImage imageWithContentsOfFile:filePath];
 }
 
 
@@ -42,8 +45,12 @@
     self.timestamp = dictionary[@"timestamp"];
     self.imagePath = dictionary[@"path"];
     NSString *thumbnailPath = [self.imagePath stringByReplacingOccurrencesOfString:@".png" withString:@"_thumb.png"];
-    NSData *data = [NSData dataWithContentsOfFile:self.imagePath];
-    self.imageThumbnail = [UIImage imageWithContentsOfFile:thumbnailPath];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, thumbnailPath];
+    
+    self.imageThumbnail = [UIImage imageWithContentsOfFile:filePath];
 }
 
 + (NSString*)saveData:(NSData*)data withName:(NSString*)name
@@ -85,7 +92,7 @@
     //Creating new data srouce
     StoredImage *newDataSource = [[StoredImage alloc] init];
     newDataSource.imageThumbnail = thumbnail;
-    newDataSource.imagePath = imagePath;
+    newDataSource.imagePath = imageName;
     newDataSource.timestamp = timestamp;
     return newDataSource;
 }

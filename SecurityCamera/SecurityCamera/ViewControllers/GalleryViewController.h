@@ -7,8 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StoredImage.h"
+
+@protocol GallerViewControllerDelegate;
 
 @interface GalleryViewController : UIViewController
 
-//- (void)loadData:
+@property (nonatomic,strong) UIImageView *imageView;
+@property (nonatomic,weak) StoredImage *storedImage;
+@property (nonatomic,weak) id<GallerViewControllerDelegate> delegate;
+
+- (void)loadData:(StoredImage*)storedImage;
+
+@end
+
+@protocol GallerViewControllerDelegate <NSObject>
+
+- (void)galleryViewControllerDidClose:(GalleryViewController*)controller;
+- (void)galleryViewController:(GalleryViewController*)controller didRemovedData:(StoredImage*)dataSource;
+
 @end

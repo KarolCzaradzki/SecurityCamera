@@ -20,7 +20,6 @@
 
 //If there is significant difference between images the result will be
 - (bool)pushImageAndCompareWithPrevious:(UIImage*)image;
-- (UIImage*)generateThumbnail:(UIImage*)sourceImage;
 
 +(ImageHelper*) sharedInstance;
 

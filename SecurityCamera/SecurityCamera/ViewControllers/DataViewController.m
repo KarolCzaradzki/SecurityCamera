@@ -10,6 +10,7 @@
 #import "SimpleImageCell.h"
 #import "StorageHelper.h"
 
+
 @interface DataViewController () {
     UITableView *tableView;
 }
@@ -69,5 +70,33 @@
     return [SimpleImageCell cellHeight];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    StoredImage *dataSource = [[StorageHelper sharedInstance].storedImages objectAtIndex:indexPath.row];
+    [self presentViewControllerWithData:dataSource];
+}
+
+- (void)presentViewControllerWithData:(StoredImage*)dataSource
+{
+    GalleryViewController *modelViewController = [[GalleryViewController alloc] init];
+    [modelViewController loadData:dataSource];
+    modelViewController.delegate = self;
+    [self presentViewController:modelViewController animated:YES completion:^{
+    }];
+}
+
+#pragma mark GallerViewControllerDelegate
+
+- (void)galleryViewControllerDidClose:(GalleryViewController*)controller
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+
+- (void)galleryViewController:(GalleryViewController*)controller didRemovedData:(StoredImage*)dataSource
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+}
 
 @end
