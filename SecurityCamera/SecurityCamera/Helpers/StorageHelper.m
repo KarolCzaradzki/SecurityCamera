@@ -10,6 +10,16 @@
 
 @implementation StorageHelper
 
+-(id)init
+{
+    self = [super init];
+    if(self)
+    {
+        
+    }
+    return self;
+}
+
 +(StorageHelper*) sharedInstance
 {
     static StorageHelper *helper = nil;

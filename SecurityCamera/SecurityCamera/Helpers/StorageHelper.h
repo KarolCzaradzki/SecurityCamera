@@ -11,4 +11,7 @@
 @interface StorageHelper : NSObject {
     
 }
+
++(StorageHelper*) sharedInstance;
+
 @end
