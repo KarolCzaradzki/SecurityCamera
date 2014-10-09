@@ -18,7 +18,6 @@
 
 - (void)synchronize;
 - (void)addImage:(UIImage*)image withTimestamp:(NSString*)timestamp;
-- (void)saveData:(NSData*)data withName:(NSString*)name;
 
 +(StorageHelper*) sharedInstance;
 

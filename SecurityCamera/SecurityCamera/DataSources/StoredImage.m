@@ -42,6 +42,7 @@
     self.timestamp = dictionary[@"timestamp"];
     self.imagePath = dictionary[@"path"];
     NSString *thumbnailPath = [self.imagePath stringByReplacingOccurrencesOfString:@".png" withString:@"_thumb.png"];
+    NSData *data = [NSData dataWithContentsOfFile:self.imagePath];
     self.imageThumbnail = [UIImage imageWithContentsOfFile:thumbnailPath];
 }
 
@@ -51,21 +52,33 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, name];
     [data writeToFile:filePath atomically:YES];
+    
     return filePath;
+}
+
++ (NSString*)makeName:(NSString*)input
+{
+    NSMutableString *result = [input mutableCopy];
+    [result replaceOccurrencesOfString:@":" withString:@"" options:0 range:NSMakeRange(0, result.length)];
+    [result replaceOccurrencesOfString:@" " withString:@"" options:0 range:NSMakeRange(0, result.length)];
+    [result replaceOccurrencesOfString:@"/" withString:@"" options:0 range:NSMakeRange(0, result.length)];
+    [result replaceOccurrencesOfString:@"." withString:@"" options:0 range:NSMakeRange(0, result.length)];
+    return result;
 }
 
 + (StoredImage*)createStorageImageAndSave:(UIImage*)image timestamp:(NSString*)timestamp
 {
     //Saving image
     NSData *imageData = UIImagePNGRepresentation(image);
-    NSString* imageName = [timestamp stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString* imageName = [self makeName:timestamp];
+    
     imageName = [imageName stringByAppendingString:@".png"];
     NSString *imagePath = [StoredImage saveData:imageData withName:imageName];
     
     //Saving thumbnail
     UIImage *thumbnail = [image thumbnail];
     imageData = UIImagePNGRepresentation(thumbnail);
-    NSString* thumbnailPath = [timestamp stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString* thumbnailPath = [self makeName:timestamp];
     thumbnailPath = [thumbnailPath stringByAppendingString:@"_thumb.png"];
     [StoredImage saveData:imageData withName:thumbnailPath];
     

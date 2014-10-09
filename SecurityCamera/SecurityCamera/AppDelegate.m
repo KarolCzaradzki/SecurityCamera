@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "StorageHelper.h"
+#import "ImageHelper.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +18,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [StorageHelper sharedInstance];
+    [ImageHelper sharedInstance];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSArray *filePathsArray = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:documentsDirectory  error:nil];
+
+    
     // Override point for customization after application launch.
     return YES;
 }

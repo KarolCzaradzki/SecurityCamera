@@ -22,6 +22,9 @@
 		9AAAEDA419E72B3B001D9AD2 /* UIImage+Thumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDA319E72B3B001D9AD2 /* UIImage+Thumbnail.m */; };
 		9AAAEDAA19E733D3001D9AD2 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDA719E733D3001D9AD2 /* CameraViewController.m */; };
 		9AAAEDAB19E733D3001D9AD2 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDA919E733D3001D9AD2 /* DataViewController.m */; };
+		9AAAEDAF19E735CD001D9AD2 /* SimpleImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDAE19E735CD001D9AD2 /* SimpleImageCell.m */; };
+		9AAAEDB219E73F2E001D9AD2 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDB119E73F2E001D9AD2 /* TabBarController.m */; };
+		9AAAEDB519E7407D001D9AD2 /* GalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDB419E7407D001D9AD2 /* GalleryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,12 @@
 		9AAAEDA719E733D3001D9AD2 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		9AAAEDA819E733D3001D9AD2 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
 		9AAAEDA919E733D3001D9AD2 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
+		9AAAEDAD19E735CD001D9AD2 /* SimpleImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleImageCell.h; sourceTree = "<group>"; };
+		9AAAEDAE19E735CD001D9AD2 /* SimpleImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleImageCell.m; sourceTree = "<group>"; };
+		9AAAEDB019E73F2E001D9AD2 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		9AAAEDB119E73F2E001D9AD2 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
+		9AAAEDB319E7407D001D9AD2 /* GalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryViewController.h; sourceTree = "<group>"; };
+		9AAAEDB419E7407D001D9AD2 /* GalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +115,7 @@
 		9AAAED5E19E701C9001D9AD2 /* SecurityCamera */ = {
 			isa = PBXGroup;
 			children = (
+				9AAAEDAC19E735B4001D9AD2 /* Controls */,
 				9AAAEDA519E733D3001D9AD2 /* ViewControllers */,
 				9AAAEDA119E72B19001D9AD2 /* Categories */,
 				9AAAED9319E7288E001D9AD2 /* DataSources */,
@@ -201,8 +211,21 @@
 				9AAAEDA719E733D3001D9AD2 /* CameraViewController.m */,
 				9AAAEDA819E733D3001D9AD2 /* DataViewController.h */,
 				9AAAEDA919E733D3001D9AD2 /* DataViewController.m */,
+				9AAAEDB019E73F2E001D9AD2 /* TabBarController.h */,
+				9AAAEDB119E73F2E001D9AD2 /* TabBarController.m */,
+				9AAAEDB319E7407D001D9AD2 /* GalleryViewController.h */,
+				9AAAEDB419E7407D001D9AD2 /* GalleryViewController.m */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9AAAEDAC19E735B4001D9AD2 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				9AAAEDAD19E735CD001D9AD2 /* SimpleImageCell.h */,
+				9AAAEDAE19E735CD001D9AD2 /* SimpleImageCell.m */,
+			);
+			path = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,13 +329,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AAAEDAB19E733D3001D9AD2 /* DataViewController.m in Sources */,
+				9AAAEDB519E7407D001D9AD2 /* GalleryViewController.m in Sources */,
 				9AAAED6519E701C9001D9AD2 /* AppDelegate.m in Sources */,
 				9AAAED9C19E7288E001D9AD2 /* ImageHelper.mm in Sources */,
 				9AAAED6219E701C9001D9AD2 /* main.m in Sources */,
 				9AAAED9D19E7288E001D9AD2 /* StorageHelper.m in Sources */,
 				9AAAEDA019E728ED001D9AD2 /* StoredImage.m in Sources */,
 				9AAAEDAA19E733D3001D9AD2 /* CameraViewController.m in Sources */,
+				9AAAEDB219E73F2E001D9AD2 /* TabBarController.m in Sources */,
 				9AAAEDA419E72B3B001D9AD2 /* UIImage+Thumbnail.m in Sources */,
+				9AAAEDAF19E735CD001D9AD2 /* SimpleImageCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

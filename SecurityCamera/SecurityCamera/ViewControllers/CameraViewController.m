@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <ImageIO/CGImageProperties.h>
 #import "ImageHelper.h"
+#import "StorageHelper.h"
 
 @interface CameraViewController ()
 
@@ -143,7 +144,6 @@
     {
         [self performSelectorOnMainThread:@selector(noMotionDetected) withObject:image waitUntilDone:NO];
     }
-    
 }
 
 - (void)noMotionDetected
@@ -151,6 +151,7 @@
     //Restarting timer
    [self initializeTimer];
 }
+
 - (void)newImageCaptured:(UIImage*)image
 {
     //Setting new image
@@ -163,6 +164,8 @@
                                                           timeStyle:NSDateFormatterFullStyle];
     NSString *formatedString = [NSString stringWithFormat:@"Last image captured: %@",dateString];
     lastMotionImageDateLabel.text = formatedString;
+    
+    [[StorageHelper sharedInstance] addImage:image withTimestamp:dateString];
     
     //Restarting timer
     [self initializeTimer];

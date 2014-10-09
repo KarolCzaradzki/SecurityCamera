@@ -21,6 +21,7 @@
     if(self)
     {
         storedImages = [[NSMutableArray alloc] init];
+        [self load];
     }
     return self;
 }

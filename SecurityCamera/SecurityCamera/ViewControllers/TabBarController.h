@@ -1,5 +1,5 @@
 //
-//  DataViewController.h
+//  TabBarController.h
 //  SecurityCamera
 //
 //  Created by Karol Czaradzki on 09/10/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DataViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
-
+@interface TabBarController : UITabBarController
 
 @end
-

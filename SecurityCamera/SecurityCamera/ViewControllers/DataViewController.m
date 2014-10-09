@@ -7,8 +7,12 @@
 //
 
 #import "DataViewController.h"
+#import "SimpleImageCell.h"
+#import "StorageHelper.h"
 
-@interface DataViewController ()
+@interface DataViewController () {
+    UITableView *tableView;
+}
 
 @end
 
@@ -16,12 +20,54 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    tableView = [[UITableView alloc] init];
+    [self.view addSubview:tableView];
+    
+    tableView.dataSource = self;
+    tableView.delegate = self;
+    tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-50);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [tableView reloadData];
+}
+
+
+#pragma mark TableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [StorageHelper sharedInstance].storedImages.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //Reusing cell if possible
+    SimpleImageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"default"];
+    
+    //Creating new cell otherwise
+    if(!cell) {
+        cell = [[SimpleImageCell alloc] init];
+    }
+    
+    //Loading data into cell
+    [cell loadData:[[StorageHelper sharedInstance].storedImages objectAtIndex:indexPath.row]];
+    
+    return cell;
+}
+
+#pragma mark TableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [SimpleImageCell cellHeight];
+}
+
 
 @end

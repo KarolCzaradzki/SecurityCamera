@@ -1,5 +1,5 @@
 //
-//  DataViewController.h
+//  GalleryViewController.h
 //  SecurityCamera
 //
 //  Created by Karol Czaradzki on 09/10/14.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DataViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface GalleryViewController : UIViewController
 
-
+//- (void)loadData:
 @end
-
