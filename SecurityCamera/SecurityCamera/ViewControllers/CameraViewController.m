@@ -135,7 +135,7 @@
 
 - (void)analyzeImage:(UIImage*)image
 {
-    if(![[ImageHelper sharedInstance] pushImageAndCompare:image])
+    if(![[ImageHelper sharedInstance] pushImageAndCompareWithPrevious:image])
     {
         [self performSelectorOnMainThread:@selector(newImageCaptured:) withObject:image waitUntilDone:NO];
     }

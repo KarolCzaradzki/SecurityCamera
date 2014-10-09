@@ -27,7 +27,9 @@
     self.lastImage = nil;
 }
 
-- (bool)pushImageAndCompare:(UIImage*)image
+#pragma mark Base
+
+- (bool)pushImageAndCompareWithPrevious:(UIImage*)image
 {
     if(!lastImage) {
         lastImage = image;
@@ -38,6 +40,8 @@
         return result;
     }
 }
+
+#pragma mark Image manipulation
 
 - (bool)compareImage:(UIImage*)imageA withImage:(UIImage*)imageB
 {

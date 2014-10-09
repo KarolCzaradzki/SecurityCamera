@@ -18,6 +18,10 @@
 		9AAAED9B19E7288E001D9AD2 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AAAED9519E7288E001D9AD2 /* opencv2.framework */; };
 		9AAAED9C19E7288E001D9AD2 /* ImageHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAED9819E7288E001D9AD2 /* ImageHelper.mm */; };
 		9AAAED9D19E7288E001D9AD2 /* StorageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAED9A19E7288E001D9AD2 /* StorageHelper.m */; };
+		9AAAEDA019E728ED001D9AD2 /* StoredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAED9F19E728ED001D9AD2 /* StoredImage.m */; };
+		9AAAEDA419E72B3B001D9AD2 /* UIImage+Thumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDA319E72B3B001D9AD2 /* UIImage+Thumbnail.m */; };
+		9AAAEDAA19E733D3001D9AD2 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDA719E733D3001D9AD2 /* CameraViewController.m */; };
+		9AAAEDAB19E733D3001D9AD2 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAEDA919E733D3001D9AD2 /* DataViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,14 @@
 		9AAAED9819E7288E001D9AD2 /* ImageHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageHelper.mm; sourceTree = "<group>"; };
 		9AAAED9919E7288E001D9AD2 /* StorageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageHelper.h; sourceTree = "<group>"; };
 		9AAAED9A19E7288E001D9AD2 /* StorageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageHelper.m; sourceTree = "<group>"; };
+		9AAAED9E19E728ED001D9AD2 /* StoredImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoredImage.h; sourceTree = "<group>"; };
+		9AAAED9F19E728ED001D9AD2 /* StoredImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoredImage.m; sourceTree = "<group>"; };
+		9AAAEDA219E72B3B001D9AD2 /* UIImage+Thumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Thumbnail.h"; sourceTree = "<group>"; };
+		9AAAEDA319E72B3B001D9AD2 /* UIImage+Thumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Thumbnail.m"; sourceTree = "<group>"; };
+		9AAAEDA619E733D3001D9AD2 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		9AAAEDA719E733D3001D9AD2 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		9AAAEDA819E733D3001D9AD2 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
+		9AAAEDA919E733D3001D9AD2 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +106,8 @@
 		9AAAED5E19E701C9001D9AD2 /* SecurityCamera */ = {
 			isa = PBXGroup;
 			children = (
+				9AAAEDA519E733D3001D9AD2 /* ViewControllers */,
+				9AAAEDA119E72B19001D9AD2 /* Categories */,
 				9AAAED9319E7288E001D9AD2 /* DataSources */,
 				9AAAED9419E7288E001D9AD2 /* Frameworks */,
 				9AAAED9619E7288E001D9AD2 /* Helpers */,
@@ -146,6 +160,8 @@
 		9AAAED9319E7288E001D9AD2 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
+				9AAAED9E19E728ED001D9AD2 /* StoredImage.h */,
+				9AAAED9F19E728ED001D9AD2 /* StoredImage.m */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -167,6 +183,26 @@
 				9AAAED9A19E7288E001D9AD2 /* StorageHelper.m */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9AAAEDA119E72B19001D9AD2 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				9AAAEDA219E72B3B001D9AD2 /* UIImage+Thumbnail.h */,
+				9AAAEDA319E72B3B001D9AD2 /* UIImage+Thumbnail.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		9AAAEDA519E733D3001D9AD2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9AAAEDA619E733D3001D9AD2 /* CameraViewController.h */,
+				9AAAEDA719E733D3001D9AD2 /* CameraViewController.m */,
+				9AAAEDA819E733D3001D9AD2 /* DataViewController.h */,
+				9AAAEDA919E733D3001D9AD2 /* DataViewController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,10 +305,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AAAEDAB19E733D3001D9AD2 /* DataViewController.m in Sources */,
 				9AAAED6519E701C9001D9AD2 /* AppDelegate.m in Sources */,
 				9AAAED9C19E7288E001D9AD2 /* ImageHelper.mm in Sources */,
 				9AAAED6219E701C9001D9AD2 /* main.m in Sources */,
 				9AAAED9D19E7288E001D9AD2 /* StorageHelper.m in Sources */,
+				9AAAEDA019E728ED001D9AD2 /* StoredImage.m in Sources */,
+				9AAAEDAA19E733D3001D9AD2 /* CameraViewController.m in Sources */,
+				9AAAEDA419E72B3B001D9AD2 /* UIImage+Thumbnail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

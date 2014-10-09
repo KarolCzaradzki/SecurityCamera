@@ -7,10 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "StoredImage.h"
 
 @interface StorageHelper : NSObject {
-    
+
 }
+
+@property (nonatomic,readonly) NSMutableArray *storedImages;
+
+- (void)synchronize;
+- (void)addImage:(UIImage*)image withTimestamp:(NSString*)timestamp;
+- (void)saveData:(NSData*)data withName:(NSString*)name;
 
 +(StorageHelper*) sharedInstance;
 
