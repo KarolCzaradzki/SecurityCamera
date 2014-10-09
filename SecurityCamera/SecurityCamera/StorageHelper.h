@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface StorageHelper : NSObject
-
+@interface StorageHelper : NSObject {
+    
+}
 @end

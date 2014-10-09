@@ -15,6 +15,7 @@
 
 @property (nonatomic,strong) UIImageView *cameraImageView;
 @property (nonatomic,strong) UIImageView *lastMotionImageView;
+@property (nonatomic,strong) UIImageView *lastMotionDiffImageView;
 @property (nonatomic,strong) UILabel *lastMotionImageDateLabel;
 @property (nonatomic,strong) NSTimer *photoTimer;
 @property (nonatomic,strong) AVCaptureStillImageOutput* stillImageOutput;

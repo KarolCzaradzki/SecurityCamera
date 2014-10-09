@@ -16,8 +16,9 @@
 		9AAAED7319E701C9001D9AD2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAAED7119E701C9001D9AD2 /* LaunchScreen.xib */; };
 		9AAAED7F19E701CA001D9AD2 /* SecurityCameraTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAED7E19E701CA001D9AD2 /* SecurityCameraTests.m */; };
 		9AAAED8919E70599001D9AD2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AAAED8819E70599001D9AD2 /* AVFoundation.framework */; };
-		9AAAED8C19E7075F001D9AD2 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAED8B19E7075F001D9AD2 /* ImageHelper.m */; };
+		9AAAED8C19E7075F001D9AD2 /* ImageHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAED8B19E7075F001D9AD2 /* ImageHelper.mm */; };
 		9AAAED8F19E7076D001D9AD2 /* StorageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAAED8E19E7076D001D9AD2 /* StorageHelper.m */; };
+		9AAAED9219E7140D001D9AD2 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AAAED9119E7140D001D9AD2 /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,9 +49,10 @@
 		9AAAED7E19E701CA001D9AD2 /* SecurityCameraTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecurityCameraTests.m; sourceTree = "<group>"; };
 		9AAAED8819E70599001D9AD2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9AAAED8A19E7075F001D9AD2 /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
-		9AAAED8B19E7075F001D9AD2 /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
+		9AAAED8B19E7075F001D9AD2 /* ImageHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageHelper.mm; sourceTree = "<group>"; };
 		9AAAED8D19E7076D001D9AD2 /* StorageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageHelper.h; sourceTree = "<group>"; };
 		9AAAED8E19E7076D001D9AD2 /* StorageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageHelper.m; sourceTree = "<group>"; };
+		9AAAED9119E7140D001D9AD2 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AAAED9219E7140D001D9AD2 /* opencv2.framework in Frameworks */,
 				9AAAED8919E70599001D9AD2 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,10 +78,10 @@
 		9AAAED5319E701C9001D9AD2 = {
 			isa = PBXGroup;
 			children = (
-				9AAAED8819E70599001D9AD2 /* AVFoundation.framework */,
 				9AAAED5E19E701C9001D9AD2 /* SecurityCamera */,
 				9AAAED7B19E701C9001D9AD2 /* SecurityCameraTests */,
 				9AAAED5D19E701C9001D9AD2 /* Products */,
+				9AAAED9019E7140D001D9AD2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,7 +104,7 @@
 				9AAAED6919E701C9001D9AD2 /* DataViewController.h */,
 				9AAAED6A19E701C9001D9AD2 /* DataViewController.m */,
 				9AAAED8A19E7075F001D9AD2 /* ImageHelper.h */,
-				9AAAED8B19E7075F001D9AD2 /* ImageHelper.m */,
+				9AAAED8B19E7075F001D9AD2 /* ImageHelper.mm */,
 				9AAAED8D19E7076D001D9AD2 /* StorageHelper.h */,
 				9AAAED8E19E7076D001D9AD2 /* StorageHelper.m */,
 				9AAAED6C19E701C9001D9AD2 /* Main.storyboard */,
@@ -136,6 +139,16 @@
 				9AAAED7D19E701CA001D9AD2 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9AAAED9019E7140D001D9AD2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AAAED8819E70599001D9AD2 /* AVFoundation.framework */,
+				9AAAED9119E7140D001D9AD2 /* opencv2.framework */,
+			);
+			name = Frameworks;
+			path = SecurityCamera/Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +256,7 @@
 				9AAAED6819E701C9001D9AD2 /* CameraViewController.m in Sources */,
 				9AAAED8F19E7076D001D9AD2 /* StorageHelper.m in Sources */,
 				9AAAED6219E701C9001D9AD2 /* main.m in Sources */,
-				9AAAED8C19E7075F001D9AD2 /* ImageHelper.m in Sources */,
+				9AAAED8C19E7075F001D9AD2 /* ImageHelper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +380,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SecurityCamera/Frameworks",
+				);
 				INFOPLIST_FILE = SecurityCamera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -377,6 +394,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SecurityCamera/Frameworks",
+				);
 				INFOPLIST_FILE = SecurityCamera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

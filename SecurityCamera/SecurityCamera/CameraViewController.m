@@ -22,6 +22,7 @@
 @synthesize stillImageOutput;
 @synthesize lastMotionImageDateLabel;
 @synthesize lastMotionImageView;
+@synthesize lastMotionDiffImageView;
 
 #pragma mark Lifecycle
 - (void)dealloc
@@ -32,6 +33,7 @@
     self.photoTimer = nil;
     self.lastMotionImageView = nil;
     self.lastMotionImageDateLabel = nil;
+    self.lastMotionDiffImageView = nil;
 }
 
 - (void)viewDidLoad {
@@ -133,7 +135,14 @@
 
 - (void)analyzeImage:(UIImage*)image
 {
-    [self performSelectorOnMainThread:@selector(newImageCaptured:) withObject:image waitUntilDone:YES];
+    if(![[ImageHelper sharedInstance] pushImageAndCompare:image])
+    {
+        [self performSelectorOnMainThread:@selector(newImageCaptured:) withObject:image waitUntilDone:NO];
+    }
+    else
+    {
+        [self performSelectorOnMainThread:@selector(noMotionDetected) withObject:image waitUntilDone:NO];
+    }
     
 }
 
@@ -145,7 +154,8 @@
 - (void)newImageCaptured:(UIImage*)image
 {
     //Setting new image
-    self.lastMotionImageView.image = image;
+    self.lastMotionImageView.image = [ImageHelper sharedInstance].lastMotionImage;
+    self.lastMotionDiffImageView.image = [ImageHelper sharedInstance].lastMotionDifferenceImage;
     
     //Setting date string
     NSString *dateString = [NSDateFormatter localizedStringFromDate:[NSDate date]
@@ -176,15 +186,30 @@
 
 - (void)createLastMotionImageViewAndLabel
 {
+    //Creating image view for last captured image with motion
     self.lastMotionImageView = [[UIImageView alloc] init];
     [self.view addSubview:self.lastMotionImageView];
     
     //Frame
     CGRect imageViewFrame;
     imageViewFrame.origin = CGPointMake(0,self.view.bounds.size.height/2 + 10);
-    imageViewFrame.size = CGSizeMake(self.view.bounds.size.width,self.view.bounds.size.height/3);
+    imageViewFrame.size = CGSizeMake(self.view.bounds.size.width/2,
+                                     self.view.bounds.size.height/3);
     self.lastMotionImageView.frame = imageViewFrame;
     self.lastMotionImageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    //Creating image view for last captured significant difference in motion
+    lastMotionDiffImageView = [[UIImageView alloc] init];
+    [self.view addSubview:self.lastMotionDiffImageView];
+    
+    //Frame
+    imageViewFrame.origin = CGPointMake(self.view.bounds.size.width/2,
+                                        self.view.bounds.size.height/2 + 10);
+    imageViewFrame.size = CGSizeMake(self.view.bounds.size.width/2 ,
+                                     self.view.bounds.size.height/3);
+    self.lastMotionDiffImageView.frame = imageViewFrame;
+    self.lastMotionDiffImageView.contentMode = UIViewContentModeScaleAspectFit;
+    
     
     //Creating label
     self.lastMotionImageDateLabel = [[UILabel alloc] init];

@@ -15,7 +15,10 @@
 }
 
 @property (nonatomic,retain) UIImage* lastImage;
+@property (nonatomic,retain) UIImage* lastMotionImage;
+@property (nonatomic,retain) UIImage* lastMotionDifferenceImage;
 
+//If there is significant difference between images the result will be
 - (bool)pushImageAndCompare:(UIImage*)image;
 
 +(ImageHelper*) sharedInstance;
