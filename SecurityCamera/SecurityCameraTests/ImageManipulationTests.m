@@ -8,33 +8,47 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "ImageHelper.h"
 
-@interface SecurityCameraTests : XCTestCase
+@interface StorageHelperTests : XCTestCase {
+    UIImage *lena1;
+    UIImage *lena2;
+}
 
 @end
 
-@implementation SecurityCameraTests
+@implementation StorageHelperTests
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    //Loading test assets
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSString *imagePath = [bundle pathForResource:@"lena1" ofType:@"png"];
+    lena1 = [UIImage imageWithContentsOfFile:imagePath];
+    imagePath = [bundle pathForResource:@"lena2" ofType:@"png"];
+    lena2 = [UIImage imageWithContentsOfFile:imagePath];
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
+
+//Tests comparision of same images
+- (void)testSameImages {
+    [[ImageHelper sharedInstance] pushImageAndCompareWithPrevious:lena1];
+    bool result = [[ImageHelper sharedInstance] pushImageAndCompareWithPrevious:lena1];
+    XCTAssert(result, @"Images are the same");
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+//Tests comparision of visibly different images
+- (void)testDifferentImages {
+    [[ImageHelper sharedInstance] pushImageAndCompareWithPrevious:lena1];
+    bool result = [[ImageHelper sharedInstance] pushImageAndCompareWithPrevious:lena2];
+    XCTAssert(!result, @"Images are different");
 }
+
 
 @end
+

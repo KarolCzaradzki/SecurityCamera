@@ -17,9 +17,11 @@
 @property (nonatomic,readonly) NSMutableArray *storedImages;
 
 - (void)synchronize;
-- (void)addImage:(UIImage*)image withTimestamp:(NSString*)timestamp;
+- (void)addImage:(UIImage*)image withTimestamp:(NSDate*)timestamp;
 - (void)removeImage:(StoredImage*)dataSource;
 - (void)removeOldImages;
+- (void)removeAllImages;
+- (float)getUsedHardDriveSpace;
 
 +(StorageHelper*) sharedInstance;
 

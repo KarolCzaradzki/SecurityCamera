@@ -75,7 +75,7 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *filePath = [NSString stringWithFormat:@"%@/%@", documentsDirectory, name];
-    [data writeToFile:filePath atomically:YES];
+    [data writeToFile:filePath atomically:NO];
     
     return filePath;
 }
@@ -90,19 +90,22 @@
     return result;
 }
 
-+ (StoredImage*)createStorageImageAndSave:(UIImage*)image timestamp:(NSString*)timestamp
++ (StoredImage*)createStorageImageAndSave:(UIImage*)image timestamp:(NSDate*)timestamp
 {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat: @"yyyy-MM-dd HH:mm:ss zzz"];
+    NSString *timestampString =  [formatter stringFromDate:timestamp];
+    
     //Saving image
     NSData *imageData = UIImagePNGRepresentation(image);
-    NSString* imageName = [self makeName:timestamp];
-    
-    imageName = [imageName stringByAppendingString:@".png"];
-    NSString *imagePath = [StoredImage saveData:imageData withName:imageName];
+    NSString* imageName = [self makeName:timestampString];
+    imageName = [imageName stringByAppendingString:@".png"];;
+    [StoredImage saveData:imageData withName:imageName];
     
     //Saving thumbnail
     UIImage *thumbnail = [image thumbnail];
     imageData = UIImagePNGRepresentation(thumbnail);
-    NSString* thumbnailPath = [self makeName:timestamp];
+    NSString* thumbnailPath = [self makeName:timestampString];
     thumbnailPath = [thumbnailPath stringByAppendingString:@"_thumb.png"];
     [StoredImage saveData:imageData withName:thumbnailPath];
     
@@ -110,7 +113,7 @@
     StoredImage *newDataSource = [[StoredImage alloc] init];
     newDataSource.imageThumbnail = thumbnail;
     newDataSource.imagePath = imageName;
-    newDataSource.timestamp = timestamp;
+    newDataSource.timestamp = timestampString;
     return newDataSource;
 }
 

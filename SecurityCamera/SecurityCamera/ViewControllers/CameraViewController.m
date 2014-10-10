@@ -188,7 +188,7 @@
     NSString *formatedString = [NSString stringWithFormat:@"Last image captured: %@ Size: %.3f",dateString,dataSizeInMegabytes];
     lastMotionImageDateLabel.text = formatedString;
     
-    [[StorageHelper sharedInstance] addImage:[ImageHelper sharedInstance].lastMotionImage withTimestamp:dateString];
+    [[StorageHelper sharedInstance] addImage:[ImageHelper sharedInstance].lastMotionImage withTimestamp:[NSDate date]];
     
     //Restarting timer
     [self initializeTimer];

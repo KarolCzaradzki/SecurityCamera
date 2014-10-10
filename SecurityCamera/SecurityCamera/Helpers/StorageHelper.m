@@ -28,7 +28,7 @@
     return self;
 }
 
-- (void)addImage:(UIImage*)image withTimestamp:(NSString*)timestamp
+- (void)addImage:(UIImage*)image withTimestamp:(NSDate*)timestamp
 {
     StoredImage *newStoredImage = [StoredImage createStorageImageAndSave:image timestamp:timestamp];
     [storedImages addObject:newStoredImage];
@@ -79,6 +79,17 @@
     }];
 }
 
+#pragma mark Calculating used space
+- (float)getUsedHardDriveSpace
+{
+    float totalSize = 0.0f;
+    for(StoredImage *image in storedImages)
+    {
+        totalSize += [image getHardDriveSize];
+    }
+    return totalSize;
+}
+
 #pragma mark Removing images
 - (void)removeImage:(StoredImage*)dataSource
 {
@@ -103,14 +114,21 @@
     }
 }
 
+- (void)removeAllImages
+{
+    while(storedImages.firstObject)
+    {
+        [self removeImage:storedImages.firstObject];
+    }
+}
+
 #pragma mark Singleton
 +(StorageHelper*) sharedInstance
 {
     static StorageHelper *helper = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    if(!helper) {
         helper = [[self alloc] init];
-    });
+    }
     return helper;
 }
 

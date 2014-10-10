@@ -29,7 +29,11 @@
 // Getting timestamp as NSDate
 - (NSDate*) timestampDate;
 
-//Factory
-+ (StoredImage*)createStorageImageAndSave:(UIImage*)image timestamp:(NSString*)timestamp;
+// Factory
++ (StoredImage*)createStorageImageAndSave:(UIImage*)image timestamp:(NSDate*)timestamp;
+
+// Useful in unit tests
+- (NSString*)imageFullPath;
+- (NSString*)thumbnailFullPath;
 
 @end

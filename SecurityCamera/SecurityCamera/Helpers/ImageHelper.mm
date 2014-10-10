@@ -49,6 +49,10 @@
     cv::Mat matB = [self cvMatFromUIImage:imageB];
     cv::Mat result;
     
+    if(matA.cols != matB.cols || matA.rows != matB.rows) {
+        return false;
+    }
+    
     //Simple "motion detection"
     absdiff(matA, matB, result);
     cvtColor(result, result, cv::COLOR_BGR2GRAY);
@@ -181,10 +185,9 @@
 +(ImageHelper*) sharedInstance
 {
     static ImageHelper *helper = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    if(!helper) {
         helper = [[self alloc] init];
-    });
+    }
     return helper;
 }
 
