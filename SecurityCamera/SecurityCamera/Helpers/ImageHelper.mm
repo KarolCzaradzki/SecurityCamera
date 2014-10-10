@@ -36,7 +36,9 @@
         return YES; //No motion detected
     } else {
         bool result = [self compareImage:image withImage:lastImage];
-        lastImage = image;
+        if(!result) {
+            lastImage = image;
+        }
         return result;
     }
 }
